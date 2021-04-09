@@ -1,13 +1,12 @@
 import React from 'react';
 import WorkoutOption from './workout_options/WorkoutOption';
-
+import './dashboard.css';
 class WorkoutDashboard extends React.Component {
 
 
     render(){
         return (
-            <div>
-                <h1>hello world</h1>
+            <div className="dashboard">
                 <WorkoutOption />
             </div>
         )

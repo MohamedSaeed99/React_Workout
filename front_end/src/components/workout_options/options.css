@@ -1,0 +1,37 @@
+.options_display {
+    width: 100vw;
+    height: 100vh;
+}
+
+.options_wrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+.option {
+    background-color: rgba(255, 255, 255, 0.8);
+    display: inline-block;
+    width: 300px;
+    height: 400px;
+    margin: 0px 10px 0px 10px;
+    border: 2px solid black;
+    border-radius: 5%;
+    box-shadow: 2px 1px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    vertical-align:middle;
+}
+
+.option:hover {
+    cursor: pointer;
+}
+
+@media (max-width: 1340px) {
+    .option {
+        width: 100vw;
+        height: 200px;
+        margin: 10px 0 10px 0;
+        border-radius: 0;
+        border-style: solid none solid none;
+    }
+}
