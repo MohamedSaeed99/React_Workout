@@ -10,7 +10,7 @@ class MuscleGroupSelect extends React.Component {
     }
 
     addMuscleToList = () => {
-
+        console.log("Adding muscle to list");
     }
 
     render() {

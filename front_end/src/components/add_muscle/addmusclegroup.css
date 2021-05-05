@@ -1,6 +1,17 @@
 .add {
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.addButton {
+    width: 45px;
+    height: 45px;
     border: 1px solid black;
     border-radius: 50%;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.addButton:hover {
+    cursor: pointer;
 }
