@@ -5,6 +5,9 @@
 }
 
 .addButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 45px;
     height: 45px;
     border: 1px solid black;
