@@ -1,22 +1,56 @@
 const express = require('express');
 const app = express();
 const axios = require('axios');
+const fs = require('fs');
 
-let call = () => {
-    axios({
-        method:'GET',
-        url: 'https://wger.de/api/v2/exercise/?muscles=1',
-        headers:{
-            Accept: 'application/json',
-            Authorization: `Token `
-        }
-    }).then(response => {
-        console.log(response.data);
+// gives access to localhost:3000 to access the api
+const cors = require('cors');
+const corsOptions ={
+    origin:'http://localhost:3000', 
+    credentials:true,           
+    optionSuccessStatus:200
+}
+app.use(cors(corsOptions));
+
+// Saves data into muscles.json
+let saveData = (data) => {
+    fs.writeFileSync('../muscles.json', data, (err) => {
+        if(err)
+            console.log(err);
     });
 }
 
-app.get('/', (req, res) => {
-    call();
+// Reads data from file
+let readData = () => {
+    const data = fs.readFileSync('../muscles.json', {encoding:'utf8', flag:'r'});
+    return JSON.parse(data);
+}
+
+//TODO: create json with id(matches the medical muscle group in the api) and non-medical names for muscle group
+app.get('/', async (req, res) => {
+    fs.exists('../muscles.json', (exists) => {
+        if(!exists){
+            axios({
+                method:'GET',
+                url: 'https://wger.de/api/v2/muscle/',
+                headers:{
+                    Accept: 'application/json',
+                    Authorization: `Token`
+                }
+            }).then(response => {
+                saveData(JSON.stringify(response.data));
+                res.send(response);
+            }).catch(err => {
+                if(err)
+                    console.log(err);
+            });
+        }
+        else {
+            console.log("here");
+
+            res.send(readData());
+        }
+    });
 });
 
 module.exports = app;
