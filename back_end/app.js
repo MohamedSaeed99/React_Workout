@@ -39,7 +39,7 @@ app.get('/', async (req, res) => {
                 }
             }).then(response => {
                 saveData(JSON.stringify(response.data));
-                res.send(response);
+                res.send(response.results);
             }).catch(err => {
                 if(err)
                     console.log(err);
@@ -48,7 +48,7 @@ app.get('/', async (req, res) => {
         else {
             console.log("here");
 
-            res.send(readData());
+            res.send(readData().results);
         }
     });
 });
