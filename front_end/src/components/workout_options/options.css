@@ -25,6 +25,11 @@
 
 .option:hover {
     cursor: pointer;
+    transform: scale(1.05);
+}
+
+.option:active{
+    transform: scale(0.95);
 }
 
 @media (max-width: 1340px) {

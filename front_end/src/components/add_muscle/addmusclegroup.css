@@ -19,6 +19,10 @@
     cursor: pointer;
 }
 
+.addButton:active {
+    transform: scale(0.90);
+}
+
 .popup {
     background-color: white;
     position: fixed;
@@ -27,6 +31,7 @@
 }
 
 .muscle {
+    cursor: pointer;
     padding: 0 5px 0 5px;
     display: inline-block;
     width: fit-content;

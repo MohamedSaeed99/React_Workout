@@ -9,8 +9,13 @@ class MuscleGroupSelect extends React.Component {
         muscles: []
     }
 
-    addMuscleToList = () => {
+    addMuscleToList = (muscle) => {
         console.log("Adding muscle to list");
+        const muscles = [...this.state.muscles, muscle];
+        this.setState({
+            muscles: muscles
+        });
+        this.props.addMuscleToDictionary(muscle, this.props.day);
     }
 
     render() {
@@ -18,7 +23,21 @@ class MuscleGroupSelect extends React.Component {
             <div className="sections">
                 <h1>Day {this.props.day}:</h1>
                 {/* List of all the muscles selected */}
-                <AddMuscleGroup addMuscleToList={this.addMuscleToList} />
+                <div className="musclegroupings">
+                    <div>
+                        {
+                            this.state.muscles.map((data, index) => {
+                                return <div key={index} className="muscles"> 
+                                            <p>{data}</p>
+                                    </div>
+                            })
+                        }
+                    </div>
+                
+                    <div>                    
+                        <AddMuscleGroup addMuscleToList={this.addMuscleToList} />
+                    </div>
+                </div>
             </div>
         );
     }
